@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01';
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: theme('colors.leaf.300');
+    color: theme('colors.forest.900');
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme('colors.cream');
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.forest.200');
+    border-radius: 999px;
+    border: 3px solid theme('colors.cream');
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.forest.300');
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Double-bezel nested shell */
+  .bezel {
+    @apply rounded-4xl bg-white/60 p-1.5 ring-1 ring-forest-900/5 backdrop-blur-sm;
+  }
+  .bezel-core {
+    @apply rounded-[1.625rem] bg-white shadow-inset-hi;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-forest-600/15 bg-white/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-forest-700;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-forest-600 after:transition-all after:duration-500 after:ease-spring hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-br from-forest-700 via-forest-600 to-leaf-500 bg-clip-text text-transparent;
+  }
+
+  .mesh-cream {
+    background-color: #FAF8F2;
+    background-image:
+      radial-gradient(40rem 40rem at 12% -10%, rgba(125, 190, 60, 0.16), transparent 60%),
+      radial-gradient(36rem 36rem at 100% 0%, rgba(14, 140, 114, 0.12), transparent 55%),
+      radial-gradient(50rem 40rem at 85% 110%, rgba(31, 107, 59, 0.1), transparent 60%);
+  }
+}
+
+/* Film grain overlay — fixed, never repaints scrolling content */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

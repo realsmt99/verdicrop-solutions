@@ -1,37 +1,33 @@
-import { ShieldCheck, Leaf, Plant, ArrowUpRight } from '@phosphor-icons/react'
+import { CheckCircle, Leaf, Drop, Recycle, Flask, ArrowUpRight } from '@phosphor-icons/react'
 import Reveal from './ui/Reveal'
 import SectionTag from './ui/SectionTag'
 import CTAButton from './ui/CTAButton'
 
-const FEATURE = {
-  tag: 'Nettoyant foliaire',
-  name: 'PuriClean Arbre',
-  desc: 'Élimine poussières, suies et dépôts qui étouffent le feuillage. Vos arbres respirent à nouveau et retrouvent toute leur vigueur.',
-  img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=80',
-}
+// Photos produit : déposez vos images dans public/products/
+// (voir public/products/README.md). En leur absence, un dégradé vert s'affiche en repli.
+const IMG_5L = '/products/5l.jpeg'
+const IMG_1L = '/products/1l.jpeg'
 
-const PRODUCTS = [
+const BENEFITS = [
   {
-    icon: ShieldCheck,
-    tag: 'Anti-ravageurs',
-    name: 'ProtectShield Bio',
-    desc: 'Une barrière naturelle qui empêche insectes et nuisibles de dévorer vos cultures.',
-    span: 'lg:col-span-2',
+    title: 'Élimine le miellat',
+    text: 'Débarrasse le feuillage des sécrétions collantes laissées par les ravageurs.',
   },
   {
-    icon: Leaf,
-    tag: 'Soin foliaire',
-    name: 'NutriLeaf',
-    desc: 'Fortifie les feuilles et renforce les défenses naturelles de la plante.',
-    span: 'lg:col-span-2',
+    title: 'Nettoie les dépôts',
+    text: 'Dissout poussières, suies et résidus qui bloquent la lumière.',
   },
   {
-    icon: Plant,
-    tag: 'Fertilisant naturel',
-    name: 'TerraVita',
-    desc: 'Nourrit le sol et stimule une croissance vigoureuse, sans chimie agressive ni résidus.',
-    span: 'lg:col-span-3',
+    title: 'Effet mouillant',
+    text: 'Améliore l’adhérence et l’efficacité de vos autres traitements.',
   },
+]
+
+const FORMULA = [
+  { icon: Leaf, label: 'Base végétale' },
+  { icon: Drop, label: 'Sans colorant' },
+  { icon: Recycle, label: 'Biodégradable' },
+  { icon: Flask, label: 'Concentrée' },
 ]
 
 export default function Products() {
@@ -40,46 +36,61 @@ export default function Products() {
       <div className="container-edge">
         <div className="max-w-2xl">
           <Reveal>
-            <SectionTag>Produits &amp; traitements</SectionTag>
+            <SectionTag>Gamme SAVO-AGRI</SectionTag>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 text-4xl leading-[1.05] sm:text-5xl">
-              <span className="font-light text-ink">Une gamme complète pour des </span>
-              <span className="font-semibold italic text-gradient">arbres propres</span>
-              <span className="font-light text-ink"> et protégés.</span>
+              <span className="font-light text-ink">Le </span>
+              <span className="font-semibold italic text-gradient">savon noir agricole</span>
+              <span className="font-light text-ink"> à l’huile d’olive.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 text-lg leading-relaxed text-ink/65">
-              Chaque traitement est formulé à partir d’ingrédients naturels, pensés pour agir en
-              synergie : nettoyer, protéger, nourrir.
+              SAVO-AGRI nettoie le feuillage en profondeur : il élimine le miellat, dissout les
+              dépôts et favorise une photosynthèse optimale, pour des traitements plus efficaces.
+              Une formule concentrée, végétale et biodégradable.
             </p>
           </Reveal>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+          {/* Produit phare — SAVO-AGRI 5 L */}
           <Reveal className="lg:col-span-4 lg:row-span-2">
-            <div className="group relative h-full min-h-[22rem] overflow-hidden rounded-[2rem] shadow-card">
+            <div className="group relative h-full min-h-[24rem] overflow-hidden rounded-[2rem] bg-forest-900 shadow-card">
               <img
-                src={FEATURE.img}
-                alt="Champ verdoyant et sain au lever du jour"
+                src={IMG_5L}
+                alt="SAVO-AGRI 5 litres — savon noir agricole à l’huile d’olive"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-spring group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-900 via-forest-900/65 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-900 via-forest-900/70 to-forest-900/10" />
               <div className="relative flex h-full flex-col justify-end p-7 text-cream sm:p-9">
                 <span className="w-max rounded-full border border-cream/25 bg-white/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream/90 backdrop-blur-sm">
-                  {FEATURE.tag}
+                  Savon noir agricole
                 </span>
-                <h3 className="mt-4 font-display text-3xl font-semibold sm:text-4xl">
-                  {FEATURE.name}
-                </h3>
-                <p className="mt-3 max-w-md leading-relaxed text-cream/75">{FEATURE.desc}</p>
+                <h3 className="mt-4 font-display text-4xl font-semibold sm:text-5xl">SAVO-AGRI</h3>
+                <p className="mt-2 text-cream/80">À l’huile d’olive — formule concentrée</p>
+                <p className="mt-4 max-w-md leading-relaxed text-cream/70">
+                  Des feuilles propres, une photosynthèse optimale et des traitements plus
+                  efficaces.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {BENEFITS.map((b) => (
+                    <span
+                      key={b.title}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-cream/90 ring-1 ring-cream/15 backdrop-blur-sm"
+                    >
+                      <CheckCircle size={14} weight="fill" className="text-leaf-300" />
+                      {b.title}
+                    </span>
+                  ))}
+                </div>
                 <a
                   href="#contact"
-                  className="group/link mt-5 inline-flex w-max items-center gap-2 text-sm font-semibold text-leaf-300 transition-colors hover:text-leaf-100"
+                  className="group/link mt-6 inline-flex w-max items-center gap-2 text-sm font-semibold text-leaf-300 transition-colors hover:text-leaf-100"
                 >
-                  En savoir plus
+                  Demander ce produit
                   <ArrowUpRight
                     size={16}
                     weight="bold"
@@ -90,31 +101,78 @@ export default function Products() {
             </div>
           </Reveal>
 
-          {PRODUCTS.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08} className={p.span}>
-              <div className="group h-full rounded-[1.75rem] bg-white p-7 shadow-soft ring-1 ring-forest-900/5 transition-all duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-card">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-leaf-100 text-forest-600 transition-colors duration-500 group-hover:bg-forest-600 group-hover:text-cream">
-                  <p.icon size={24} weight="duotone" />
-                </div>
-                <span className="mt-5 block text-xs font-semibold uppercase tracking-[0.18em] text-gold-500">
-                  {p.tag}
+          {/* Format 1 L */}
+          <Reveal delay={0.05} className="lg:col-span-2">
+            <div className="group relative h-full min-h-[12rem] overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-forest-700 to-forest-800 shadow-soft">
+              <img
+                src={IMG_1L}
+                alt="SAVO-AGRI 1 litre"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-spring group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-900/85 via-forest-900/10 to-transparent" />
+              <div className="relative flex h-full items-end justify-between gap-2 p-5 text-cream">
+                <span className="font-display text-lg font-semibold">Format 1 L</span>
+                <span className="rounded-full bg-cream/15 px-3 py-1 text-xs font-medium backdrop-blur-sm">
+                  Petites surfaces
                 </span>
-                <h3 className="mt-1.5 font-display text-xl font-semibold text-ink">{p.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/60">{p.desc}</p>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          </Reveal>
 
+          {/* La formule */}
+          <Reveal delay={0.1} className="lg:col-span-2">
+            <div className="h-full rounded-[1.75rem] bg-white p-6 shadow-soft ring-1 ring-forest-900/5">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-500">
+                La formule
+              </span>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {FORMULA.map((f) => (
+                  <div key={f.label} className="flex items-center gap-2.5">
+                    <div className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-leaf-100 text-forest-600">
+                      <f.icon size={18} weight="duotone" />
+                    </div>
+                    <span className="text-sm font-medium text-ink/80">{f.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Bénéfices */}
           <Reveal delay={0.12} className="lg:col-span-3">
+            <div className="h-full rounded-[1.75rem] bg-white p-7 shadow-soft ring-1 ring-forest-900/5">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="font-display text-xl font-semibold text-ink">Pourquoi ça marche</h3>
+                <span className="flex-none rounded-full bg-forest-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-forest-600">
+                  Made in Algeria
+                </span>
+              </div>
+              <ul className="mt-5 space-y-4">
+                {BENEFITS.map((b) => (
+                  <li key={b.title} className="flex gap-3">
+                    <CheckCircle size={22} weight="duotone" className="mt-0.5 flex-none text-leaf-500" />
+                    <div>
+                      <div className="font-semibold text-ink">{b.title}</div>
+                      <p className="text-sm leading-relaxed text-ink/60">{b.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+
+          {/* CTA */}
+          <Reveal delay={0.14} className="lg:col-span-3">
             <div className="relative h-full overflow-hidden rounded-[1.75rem] bg-forest-600 p-7 text-cream sm:p-8">
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-leaf-400/30 blur-2xl" />
               <div className="relative flex h-full flex-col">
                 <h3 className="font-display text-2xl font-semibold leading-snug">
-                  Un programme sur-mesure pour votre exploitation&nbsp;?
+                  Besoin de SAVO-AGRI en volume&nbsp;?
                 </h3>
                 <p className="mt-3 max-w-sm text-cream/75">
-                  Nos agronomes établissent un plan de traitement adapté à vos arbres, votre sol et
-                  votre saison.
+                  Disponible en 1 L et 5 L. Nos conseillers vous orientent vers le dosage adapté à
+                  vos arbres et vos cultures.
                 </p>
                 <div className="mt-6">
                   <CTAButton href="#contact" variant="light" icon={ArrowUpRight}>

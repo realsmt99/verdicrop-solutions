@@ -10,7 +10,12 @@ const NAV = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const PRODUCTS = ['PuriClean Arbre', 'ProtectShield Bio', 'NutriLeaf', 'TerraVita']
+const PRODUCTS = [
+  'SAVO-AGRI — 1 L',
+  'SAVO-AGRI — 5 L',
+  'Savon noir à l’huile d’olive',
+  'Formule biodégradable',
+]
 
 const SOCIALS = [
   { icon: FacebookLogo, label: 'Facebook' },
